@@ -1,7 +1,7 @@
 import { ItemsDataLoader } from "../../components/common/Items/ItemsDataLoader";
 
-export const MoviesPage = () => {
+export const SearchPage = () => {
   return (
-    <ItemsDataLoader type="movies" />
+    <ItemsDataLoader type="multi" />
   );
 };

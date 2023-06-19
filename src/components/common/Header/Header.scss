@@ -1,13 +1,49 @@
-// .header {
-//   display: flex;
-//   align-items: center;
 
-//   &__logo {
-//     min-width: 300px;
-//   }
-//   &__form {
-    
-//   }
-//   &__ {
-//   }
-// }
+.logo {
+  @apply font-bold tracking-widest col-span-1 pr-10;
+
+  &__text {
+    @apply block text-4xl;
+    @apply lg:text-3xl md:hidden;
+  }
+
+  &__burger {
+    @apply hidden text-2xl;
+    @apply md:block;
+  }
+}
+
+.search {
+  @apply pr-2;
+
+  &__icon {
+    @apply absolute inset-y-0 left-0 flex items-center;
+    @apply pl-3 text-xl text-gray-400;
+    @apply sm:hidden;
+  }
+
+  &__input {
+    @apply block w-[500px] py-4 pl-10 pr-28;
+    @apply rounded-[24px] text-sm bg-gray-600 bg-opacity-20 border border-gray-600 focus:outline-none focus:border focus:border-blue-400;
+    @apply lg:w-full lg:text-xs lg:py-3 lg:pr-[100px] md:min-w-full sm:pl-4 sm:pr-11;
+  }
+
+  &__button {
+    @apply absolute right-2.5 bottom-2.5 px-6 py-2;
+    @apply rounded-2xl text-sm bg-blue-800 dark:hover:bg-gray-600 dark:focus:ring-gray-700 duration-500;
+    @apply lg:bottom-[5px] lg:text-xs sm:bottom-[6px] sm:p-1.5;
+  }
+}
+
+.login {
+  @apply flex basis-3/12 justify-end items-center gap-4;
+
+  &__icon {
+    @apply text-2xl cursor-pointer;
+  }
+  &__button {
+    @apply flex gap-2 items-center px-8 py-2.5;
+    @apply rounded-[24px] text-sm bg-blue-800 hover:bg-blue-700 focus:ring-blue-800 duration-700;
+    @apply lg:px-5 md:hidden;
+  }
+}

@@ -1,41 +1,90 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { VscAccount } from "react-icons/vsc";
+import { api } from "../../../api/fetchData";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { HiSearch } from "react-icons/hi";
 
+import './Header.scss'
 
 
 export const Header = () => {
+  const [query, setQuery] = useState<string>('');
+  
+  const activeSession = localStorage.getItem('session_id');
+
+  const navigate = useNavigate();
+ 
+  const searchByQuery = () => {
+    navigate(`/search?query=${query}`);
+    setQuery('');
+  };
+
+  const authenticateUser = () => {
+    if (activeSession) {
+      api.delete.session({session_id: activeSession});
+      localStorage.removeItem('session_id');
+      localStorage.removeItem('token');
+      window.location.reload();
+    } else {
+        navigate(`/authentication/step-1`);
+    }
+  };
+ 
   return (
-    <header className="header flex items-center py-8 px-5">
-      <div className="header__logo text-[34px] font-bold tracking-widest w-[250px]">
-        <Link 
+    <div className="container mx-auto grid grid-cols-6 items-center py-8 md:py-4">
+      <div className="logo">
+        <Link
+          className="logo__text" 
           to="/"
         >
           LOGO
         </Link>
+        <button
+          className="logo__burger"
+        >
+          <RxHamburgerMenu />
+        </button>
       </div>
 
-      <div className="flex flex-row justify-between grow">
-        <form className="">
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      <div className="flex flex-row justify-between col-span-5">
+        <form onSubmit={searchByQuery} autoComplete="off" className="search md:w-full">
+          <div className="relative" >
+            <div className="search__icon">
+              <HiSearch />
             </div>
-            <input type="search" id="search" className="block w-[400px] p-4 pl-10 pr-[100px] text-sm border rounded-2xl bg-gray-50 dark:bg-inherit border-gray-600 dark:placeholder-gray-400 text- focus:outline-none focus:border focus:border-blue-400 " placeholder="Search" required />
-            <button type="submit" className="text-white absolute right-2.5 bottom-2.5 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-500 dark:hover:bg-gray-600 dark:focus:ring-gray-700 duration-500">Search</button>
+            <input
+              type="search"
+              id="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              className="search__input"
+              placeholder="Search"
+              required 
+            />
+            <button type="submit" className="search__button">
+              <span className="sm:hidden">
+                Search
+              </span>
+              <span className="hidden text-lg sm:block">
+                <HiSearch />
+              </span>
+            </button>
           </div>
         </form>
 
-        <div className="header__login flex items-center gap-4 text-[26px]">
-          <VscAccount  />
+        <div className="login">
+          <VscAccount className="login__icon" onClick={() => authenticateUser()} />
 
           <button 
             type="button" 
-            className="rounded-xl text-sm px-6 py-3 bg-blue-800 hover:bg-blue-700 focus:ring-blue-800 duration-700"
+            className="login__button"
+            onClick={() => authenticateUser()}
           >
-            LOG IN
-          </button>
+            {activeSession ? 'LOG OUT' : 'LOG IN'}
+          </button> 
         </div>
       </div>
-    </header>
+    </div>
   );
 };

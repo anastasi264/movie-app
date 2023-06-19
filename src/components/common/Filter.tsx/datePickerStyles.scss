@@ -1,0 +1,31 @@
+.bg-dark.rmdp-wrapper,
+.bg-dark .rmdp-month-picker,
+.bg-dark .rmdp-year-picker,
+.bg-dark .rmdp-time-picker div input,
+.rmdp-container .bg-dark.ep-arrow::after {
+  background-color: rgba(17, 24, 39, 0.9);
+  color: #EFEFEF;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+.bg-dark .rmdp-day:not(.rmdp-deactive),
+.bg-dark .rmdp-time-picker div .rmdp-am,
+.bg-dark .rmdp-header-values,
+.bg-dark .rmdp-panel-header {
+  color: #EFEFEF;
+}
+
+.bg-dark .rmdp-day.rmdp-range {
+  color: #EFEFEF;
+}
+
+.bg-dark .rmdp-panel-body li {
+  color: #EFEFEF;
+}
+
+.bg-dark .rmdp-day.rmdp-deactive,
+.bg-dark .rmdp-day.rmdp-disabled {
+  color: #87898b;
+}

@@ -1,7 +1,7 @@
 import { SavedCollection } from "../../components/common/Items/SavedCollection";
 
-export const FavouritesPage = () => {
+export const WatchListPage = () => {
   return (
-    <SavedCollection savedType="Favourites" />
+    <SavedCollection savedType="WatchList" />
   );
 };

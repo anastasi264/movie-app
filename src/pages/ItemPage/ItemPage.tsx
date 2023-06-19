@@ -2,47 +2,47 @@
 // react
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-// import { movie } from "./testMovie";
 
 // api
 import { api } from "../../api/fetchData";
 
 // types
-import { Movie, Series } from "../../types/Movie";
+import { Movie } from "../../types/Movie";
+import { TV } from "../../types/TV";
 
-// icons
+// components
 import { ItemInfo } from "../../components/common/Item/ItemInfo";
+import { ModalError } from "../../components/common/Modal/ModalError";
+import { getTvYears, getYearFromFullDate } from "../../utils/helpers/filterItems";
+import { Loader } from "../../components/common/Loader/Loader";
 
 
 export const ItemPage = () => {
-  const [movie, setMovie] = useState<Movie | null>(null);
-  const [series, setSeries] = useState<Series | null>(null);
-
+  const [item, setItem] = useState<Movie | TV | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [erorr, setErorr] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   
   const location = useLocation();
   const type = location.state.type;
-  console.log(location)
 
   const fetchMovie = async() => {
     try {
       setLoading(true);
+      let item;
+
       switch (type) {
         case 'movies':
-          const movie = await api.get.movieContent(location.state.id);
-          setMovie(movie);
+          item = await api.get.media.movieContent(location.state.id);
           break;
 
         case 'tv':
-          const series = await api.get.serieContent(location.state.id);
-          setSeries(series);
+          item = await api.get.media.tvContent(location.state.id);
           break;
       }
+      setItem(item);
     } catch {
-      setErorr(true);
+      setError(true);
     } finally {
-      setErorr(false);
       setLoading(false);
     }
   };
@@ -56,47 +56,41 @@ export const ItemPage = () => {
     fetchMovie();
   }, [location.state.id]);
 
-  return (
-    <div className="">
-      {movie && type === 'movies' && (
-        <ItemInfo
-          type={type}
-          poster={movie.poster_path}
-          title={movie.original_title}
-          tagline={movie.tagline}
-          genres={movie.genres}
-          year={movie.release_date.slice(0, 4)}
-          time={movie.runtime}
-          countries={movie.production_countries}
-          actors={movie.credits.cast}
-          rating={movie.vote_average}
-          votes={movie.vote_count}
-          description={movie.overview}
-          images={movie.images.backdrops}
-          trailer={movie.videos.results[0]}
-          similars={movie.similar.results}
-        />
-      )}
+  if (error) {
+    return (
+      <ModalError text="Sorry, your requested resource is not found."/>
+    );
+  }
 
-      {series && type === 'tv' && (
-        <ItemInfo
-          type={type}
-          poster={series.poster_path}
-          title={series.original_name}
-          tagline={series.status}
-          genres={series.genres}
-          year={`${series.first_air_date.slice(0, 4)} / ${series.last_air_date.slice(0, 4)} `}
-          time={series.episode_run_time[0]}
-          countries={series.production_countries}
-          actors={series.credits.cast}
-          rating={series.vote_average}
-          votes={series.vote_count}
-          description={series.overview}
-          images={series.images.backdrops}
-          trailer={series.videos.results[0]}
-          similars={series.similar.results}
-        />
-      )}
-    </div>
-  );
+  if (loading || !item) {
+    return (
+      <Loader />
+    );
+  }
+
+  const { poster_path, id, tagline, genres, production_countries, credits, vote_average, vote_count, overview, images, videos, similar } = item;
+  const year = type === 'movies'
+    ? getYearFromFullDate((item as Movie).release_date)
+    : getTvYears((item as TV).first_air_date, (item as TV).last_air_date);
+
+  const itemInfoProps = {
+    type,
+    id,
+    poster: poster_path,
+    title: type === 'movies' ? (item as Movie).original_title : (item as TV).original_name,
+    tagline,
+    genres,
+    year,
+    time: type === 'movies' ? (item as Movie).runtime : (item as TV).episode_run_time[0],
+    countries: production_countries,
+    actors: credits.cast,
+    rating: vote_average,
+    votes: vote_count,
+    overview,
+    images: images.backdrops,
+    trailer: videos.results[0],
+    similars: similar.results,
+  };
+
+  return <ItemInfo {...itemInfoProps} />;
 };

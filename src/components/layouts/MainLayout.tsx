@@ -4,19 +4,20 @@ import { Sidebar } from "../common/Sidebar";
 
 export const MainLayout = () => {
   return (
-    <div className="container mx-auto">
-      <Header />
+      <div className="px-5">
+        <header className="header sticky top-0 z-50 ">
+          <Header />
+        </header>
 
-      <main className="main flex">
-        <Sidebar />
-  
-        <div className="inline-block h-[450px] min-h-[1em] w-[1px] self-stretch bg-[#757379]">
-        </div>
+      <div className="container mx-auto grid grid-cols-6 xl:grid-cols-5 md:grid-cols-none">
+        <aside className="self-start sticky top-[120px] col-span-1 h-[calc(100vh-130px)] md:hidden">
+          <Sidebar />
+        </aside>
 
-        <div className="content grow">
+        <main className="col-span-5 xl:col-span-4"> 
           <Outlet />
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   );
 };

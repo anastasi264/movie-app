@@ -10,8 +10,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/bundle';
 import 'swiper/css/autoplay';
 import { useState } from "react";
-import { ModalWindowTrailer } from "../ModalWindow";
-import classNames from "classnames";
+import { ModalTrailer } from "../Modal/ModalTrailer";
+import { Title } from "../Title/Title";
 
 type Props = {
   title: string,
@@ -23,17 +23,12 @@ export const SwiperList: React.FC<Props> = ({ title, movies }) => {
   const [trailerLink, setTrailerLink] = useState<any>(null);
 
   return (
-    <div className={classNames(
-      "flex flex-col gap-5 w-full"
-    )}>
-      <div className="flex gap-2 items-center text-[34px] font-bold">
-        <h3>{title}</h3>
-        <span><HiFire /></span>
-      </div>
+    <div className="flex flex-col gap-5">
+      <Title text={title} icon={<HiFire />} />
       <Swiper 
         slidesPerView={1}
         modules={[Navigation, Pagination, Autoplay]}
-        className="max-w-[900px] duration-700 rounded-3xl"
+        className="max-w-full duration-700 rounded-3xl"
         navigation
         pagination={{ clickable: true }}
         autoplay={{
@@ -44,13 +39,13 @@ export const SwiperList: React.FC<Props> = ({ title, movies }) => {
         speed={1200}
       >
         {movies.map((movie: any) => (
-          <SwiperSlide>
+          <SwiperSlide key={movie.id}>
             <ItemProposal movie={movie} setModalWindow={setModalWindow} setTrailerLink={setTrailerLink}/>
           </SwiperSlide>
         ))}
       </Swiper>
       {modalIsOpen && (
-        <ModalWindowTrailer link={trailerLink} showModal={setModalWindow} />
+        <ModalTrailer link={trailerLink} showModal={setModalWindow} />
       )}
     </div>
   );

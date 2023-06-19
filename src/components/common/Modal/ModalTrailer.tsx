@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction, useEffect, useRef } from "react";
-import { AiFillCloseSquare } from 'react-icons/ai'
 
 type Props = {
   link: string,
@@ -7,7 +6,7 @@ type Props = {
 };
 
 
-export const ModalWindowTrailer: React.FC<Props> = ({ link, showModal }) => {
+export const ModalTrailer: React.FC<Props> = ({ link, showModal }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

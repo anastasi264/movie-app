@@ -1,36 +1,41 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { navLinks } from "./NavigationLinks";
 import classNames from "classnames";
+import { Account } from "./Account";
+
+import './Sidebar.scss'
 
 
 export const Sidebar = () => {
   const { pathname } = useLocation();
-  console.log(pathname);
-  
 
   return (
-    <aside className="grow-0 min-w-[250px] p-5 ">
-      <nav className="">
-        <p className="mb-8 text-[#757379] font-bold">
+    <div className="pr-10 flex flex-col h-full justify-between">
+      <nav className="flex flex-col">
+        <p
+          className="mb-5 text-gray-400 font-bold">
           Menu
         </p>
-
-        <ul className="flex flex-col gap-5 ">
+        <ul className="flex flex-col gap-2">
           {navLinks.map(link => (
-            <li>
+            <li key={link.title}>
+              {link.title === 'Favourites' && (
+                <hr className="opacity-20 h-[1px] w-[75%] my-3"/>
+              )}
               <NavLink 
                 to={link.path}
                 className={({ isActive }) => (
                   classNames(
-                    'flex items-center gap-3 group text-[20px] text-[#757379] hover:text-[#EFEFEF] hover:scale-105 active:text-[#9b9999] duration-500',
-                    {'text-[#EFEFEF] scale-110 translate-x-4': isActive}
+                    'flex items-center gap-3 p-2 lg:text-sm hover:scale-105 duration-500',
+                    {'group text-gray-500 hover:text-[#EFEFEF]': !isActive},
+                    {'text-[#EFEFEF] bg-gray-600 bg-opacity-20 rounded-lg': isActive}
                   )
                 )}
               >
                 <span
                   className={classNames(
                     'icon group-hover:text-blue-700 duration-500',
-                    // {'text-blue-700': pathname.toLowerCase().includes(link.path)}
+                    {'text-blue-700': pathname.toLowerCase().includes(link.path)}
                   )}
                 >
                   {link.icon}
@@ -41,7 +46,8 @@ export const Sidebar = () => {
           ))}
         </ul>
       </nav>
-    </aside>
+      <Account />
+    </div>
   );
 };
 
