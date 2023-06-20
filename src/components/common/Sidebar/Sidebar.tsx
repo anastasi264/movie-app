@@ -9,11 +9,12 @@ import './Sidebar.scss'
 export const Sidebar = () => {
   const { pathname } = useLocation();
 
+
   return (
-    <div className="pr-10 flex flex-col h-full justify-between">
+    <div className="pr-10 lg:pr-5 flex flex-col h-full justify-between">
       <nav className="flex flex-col">
         <p
-          className="mb-5 text-gray-400 font-bold">
+          className="mb-5 lg:text-base text-gray-400 font-bold">
           Menu
         </p>
         <ul className="flex flex-col gap-2">

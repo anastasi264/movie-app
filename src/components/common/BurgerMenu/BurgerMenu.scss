@@ -1,0 +1,10 @@
+.menu {
+  @apply fixed top-0 z-[100] h-screen transition-transform duration-700;
+  @apply flex flex-col gap-8 pb-2 w-[35vw] pt-5 rounded-tr-xl;
+  @apply sm:w-[50vw];
+  background: rgb(13,14,20);
+
+  &__link {
+    @apply text-3xl font-bold ;
+  }
+}

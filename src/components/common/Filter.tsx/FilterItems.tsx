@@ -72,7 +72,7 @@ export const FilterItems: React.FC<Props> = ({ type }) => {
   }, []);
 
   return (
-    <div className="filters flex gap-5">
+    <div className="filters flex  justify-between sm:flex-col gap-5 sm:gap-2 w-full">
       <Select
         options={sortTypes}
         label="Sort"
@@ -87,7 +87,7 @@ export const FilterItems: React.FC<Props> = ({ type }) => {
 
       <DatePicker 
         onlyYearPicker
-        inputClass='py-2 min-w-[full] text-gray-400  bg-transparent border-b-2 border-gray-700 focus:outline-none'
+        inputClass='py-2 min-w-full md:w-full text-gray-400 lg:text-sm bg-transparent border-b-2 border-gray-700 focus:outline-none'
         className="bg-dark"
         minDate="1900"
         maxDate="2023" 
@@ -98,7 +98,7 @@ export const FilterItems: React.FC<Props> = ({ type }) => {
 
       <button
         type="button"
-        className="flex gap-2 items-center rounded-[24px] text-black text-[16px] px-6 bg-yellow-600 hover:bg-yellow-500 duration-700"
+        className="flex gap-2 items-center rounded-[24px] text-black text-base lg:text-sm px-6 md:px-4 sm:p-2 sm:justify-center sm:my-2 bg-yellow-600 hover:bg-yellow-500 duration-700"
         onClick={handleResetParams}
       >
         <span>Reset</span>

@@ -31,7 +31,7 @@ export const GenresList: React.FC<Props> = ({ type, genres, images }) => {
                   alt="genre"
                   className="w-full h-full object-cover rounded-xl opacity-60 group-hover:opacity-30 duration-700" />
                 <span
-                  className="absolute bottom-2 left-3 text-[22px] font-bold group-hover:scale-125 group-hover:translate-x-3 group-hover:-translate-y-3 duration-700"
+                  className="absolute bottom-2 left-3 text-2xl lg:text-xl font-bold group-hover:scale-125 group-hover:translate-x-3 group-hover:-translate-y-3 duration-700"
                 >
                   {genre.name}
                 </span>

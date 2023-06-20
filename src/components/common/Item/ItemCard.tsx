@@ -22,14 +22,14 @@ export const ItemCard: React.FC<Props> = ({ type, item }) => {
     >
       <div className="relative group">
         <img
-          className="rounded-2xl mx-[auto] shadow min-w-full h-[340px] object-cover  duration-500 group-hover:opacity-30"
+          className="rounded-2xl mx-[auto] shadow h-full object-cover duration-500 group-hover:opacity-30"
           src={getImage(poster_path)}
           alt="movie-img" 
         />
-        <BsPlayCircle className="absolute opacity-0 top-[calc(50%-40px)] left-[calc(50%-40px)] text-white text-[80px] duration-1000 group-hover:opacity-100"/>
+        <BsPlayCircle className="absolute opacity-0 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-[80px] md:text-[60px] duration-1000 group-hover:opacity-100"/>
         <ItemAction type={type} id={id} />
       </div>
-      <div className="p-2">
+      <div className="p-2 lg:text-sm">
         <h5 className="text-center font-bold mb-1 line-clamp-1">
           {title || name}
         </h5>

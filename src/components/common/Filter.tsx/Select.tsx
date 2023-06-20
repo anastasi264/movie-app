@@ -39,7 +39,7 @@ export const Select: React.FC<Props> = ({ options, selected, label }) => {
   return (
     <div 
       ref={ref}
-      className="relative flex flex-col gap-2 py-2 w-full text-gray-400 border-b-2 border-gray-700 "
+      className="relative flex flex-col gap-2 py-2 w-full lg:text-sm text-gray-400 border-b-2 border-gray-700"
     >
       <div
         className="cursor-pointer "
@@ -47,7 +47,7 @@ export const Select: React.FC<Props> = ({ options, selected, label }) => {
       >
         {selected?.name || label}
       </div>
-      <div className="absolute inset-x-0 top-14 p-y-2 flex flex-col z-10 max-h-56 max-w-full bg-gray-900 bg-opacity-90 overflow-auto">
+      <div className="absolute inset-x-0 top-14 lg:top-10 flex flex-col z-10 max-h-56 max-w-full bg-gray-900 bg-opacity-90 overflow-auto">
         {openSelect && options?.map(option => (
           <div
             onClick={() => {
