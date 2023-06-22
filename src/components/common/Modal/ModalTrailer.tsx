@@ -28,12 +28,12 @@ export const ModalTrailer: React.FC<Props> = ({ link, showModal }) => {
 
   return (
     <div className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-70 backdrop-blur-[2px]">
-      <div ref={ref} className="relative">
+      <div ref={ref} className="relative p-4">
         <iframe
-          className="w-[900px] aspect-video rounded-2xl" 
+          className="w-[900px] aspect-video lg:max-w-full rounded-2xl" 
           src={`https://www.youtube.com/embed/${link}`} 
-          title="YouTube video player" 
-          allow="accelerometer; autoplay; clipboard-write; enclasscrypted-media; gyroscope; picture-in-picture; web-share" 
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; enclasscrypted-media; gyroscope; picture-in-picture; web-share"
         />
       </div>
     </div>

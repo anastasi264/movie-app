@@ -43,14 +43,14 @@ export const ItemsList: React.FC<Props> = ({ items, totalPages, title, params, f
         </div>
       </div>
 
-      {/* {totalPages !== 1 && (
+      {totalPages !== 1 && (
         <Pagination
           linkLocationState={params}
           totalPages={totalPages}
           page={+page}
           searchParams={searchParams}
         />
-      )} */}
+      )}
     </div>
   );
 };

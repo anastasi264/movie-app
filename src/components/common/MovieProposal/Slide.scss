@@ -1,0 +1,74 @@
+.slide {
+  @apply h-full w-full;
+  @apply bg-transparent bg-black bg-opacity-70;
+
+  &__background {
+    @apply absolute min-h-full w-full object-cover top-0 z-0 rounded-2xl opacity-20;
+  }
+
+  &__content {
+    @apply h-[400px] w-full flex gap-6 py-10 px-12;
+    @apply xl:h-[300px] lg:h-[270px] sm:h-[250px];
+    @apply xl:pt-6 lg:pb-8 md:gap-4 md:px-3 sm:pt-3 sm:pb-6;
+  }
+
+  &__poster {
+    @apply  w-[30%] z-10 object-cover object-top rounded-3xl;
+    @apply sm:w-[40%];
+  }
+
+  &__details {
+    @apply grow flex flex-col justify-between z-10;
+    @apply sm:justify-center sm:gap-4;
+  }
+
+  &__title {
+    @apply text-3xl font-bold mb-2;
+    @apply xl:text-2xl xl:mb-0;
+  }
+
+  &__year {
+    @apply text-xl font-bold;
+    @apply xl:text-base;
+  }
+
+  &__overview {
+    @apply mb-1 text-justify w-full line-clamp-3 overflow-hidden duration-700;
+    @apply xl:text-base lg:text-sm sm:hidden;
+  }
+
+  &__rating {
+    @apply flex gap-2 items-center mb-4;
+    @apply xl:text-base xl:mb-3 lg:text-sm sm:gap-1;
+  }
+
+  &__buttons {
+    @apply flex justify-between items-center;
+    @apply sm:flex-col sm:gap-2;
+  }
+
+  &__button {
+    @apply rounded-xl w-[45%] py-3 text-center duration-700;
+    @apply xl:text-sm xl:py-2 md:w-[48%] sm:text-xs sm:w-full;
+  }
+}
+
+.swiper-button-prev, .swiper-button-next {
+  @media (max-width: 768px) {
+    display: none !important
+  }
+}
+
+.scroll {
+  text-overflow: marquee;
+  animation: marquee 5s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

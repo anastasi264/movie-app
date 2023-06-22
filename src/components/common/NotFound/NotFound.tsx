@@ -9,7 +9,7 @@ export const NotFound: React.FC<Props> = ({ text, icon }) => {
       <div className="text-[200px] md:text-[120px] text-gray-500">
         {icon}
       </div>
-      <h3 className="w-[60%] text-center text-[40px] md:text-[30px] text-gray-400">
+      <h3 className="w-[60%] text-center text-4xl md:text-3xl text-gray-400">
         {text}
       </h3>
     </div>

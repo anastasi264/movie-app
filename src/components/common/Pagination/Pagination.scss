@@ -1,0 +1,26 @@
+.nav {
+ @apply mx-[auto] my-8;
+
+ &__list {
+  @apply inline-flex;
+ }
+
+ &__link {
+  @apply p-4 bg-gray-800 border-r border-gray-700 text-gray-400 hover:bg-blue-600 hover:text-white duration-500;
+  @apply md:py-3;
+
+  &_page {
+    @apply px-6;
+    @apply md:px-5;
+  }
+
+  &_active {
+    @apply bg-blue-600 text-white;
+  }
+ }
+
+ &__icon {
+  @apply inline text-xl text-gray-400;
+  @apply md:text-base;
+ }
+}

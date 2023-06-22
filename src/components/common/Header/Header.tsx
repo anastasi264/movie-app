@@ -13,7 +13,6 @@ export const Header = () => {
   const [query, setQuery] = useState<string>('');
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(true);
   const location = useLocation();
-  console.log(location);
     
   const activeSession = localStorage.getItem('session_id');
 

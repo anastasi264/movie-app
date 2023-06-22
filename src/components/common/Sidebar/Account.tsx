@@ -23,12 +23,12 @@ export const Account = () => {
 
   return (
     <div className="flex items-center gap-3 lg:gap-2 p-2 rounded-lg bg-gray-600 bg-opacity-20">
-      <FaUserAstronaut className="shrink-0 text-[40px] xl:text-[36px] lg:text-[30px] bg-blue-900 rounded-[50%]"/>
-      <div className="grow flex flex-col text-[16px] lg:text-sm overflow-hidden">
+      <FaUserAstronaut className="shrink-0 text-[40px] xl:text-4xl lg:text-3xl bg-blue-900 rounded-[50%]"/>
+      <div className="grow flex flex-col  overflow-hidden">
         <span className="truncate">
           {username || 'Guest'}
         </span>
-        <span className="text-[12px] text-gray-400 flex items-center gap-2 lg:hidden">
+        <span className="text-xs text-gray-400 flex items-center gap-2 lg:hidden">
           Welcome to the club
         </span>
       </div>

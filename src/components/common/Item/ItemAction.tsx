@@ -56,11 +56,11 @@ export const ItemAction: React.FC<Props> = ({ type, id }) => {
         onClick={(event) => changeFavourites(event)}
       >
         <BsFillBookmarkHeartFill className={classNames(
-          "peer text-[40px]",
+          "peer text-4xl",
           {"text-yellow-600 hover:text-yellow-500" : !isFavourite},
           {"text-blue-600 hover:text-blue-500" : isFavourite}
         )}/>
-        <span className="opacity-0 translate-x-[-10px] text-gray-300 text-[16px] peer-hover:opacity-100 peer-hover:translate-x-0 duration-500">
+        <span className="opacity-0 translate-x-[-10px] text-gray-300 text-base peer-hover:opacity-100 peer-hover:translate-x-0 duration-500">
           {renderCorrectText(isFavourite, 'favourites')}
         </span>
       </button>
@@ -71,11 +71,11 @@ export const ItemAction: React.FC<Props> = ({ type, id }) => {
         onClick={(event) => changeWatchlist(event)}
       >
         <MdPlaylistAddCircle className={classNames(
-          "peer text-[40px]",
+          "peer text-4xl",
           {"text-yellow-600 hover:text-yellow-500" : !isInWatchlist},
           {"text-blue-600 hover:text-blue-500" : isInWatchlist}
         )}/>
-        <span className="opacity-0 translate-x-[-10px] text-gray-300 text-[16px] peer-hover:opacity-100 peer-hover:translate-x-0 duration-500 ">
+        <span className="opacity-0 translate-x-[-10px] text-gray-300 text-base peer-hover:opacity-100 peer-hover:translate-x-0 duration-500 ">
         {renderCorrectText(isInWatchlist, 'watchlist')}
         </span>
       </button>

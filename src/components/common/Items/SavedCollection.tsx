@@ -117,7 +117,7 @@ export const SavedCollection: React.FC<Props> = ({ savedType }) => {
     : 'Watchlist Of'
  
   return (
-    <div className="">
+    <div className="flex flex-col gap-10">
       {savedMovies.length > 0 && (
         <ItemsList
           items={savedMovies}

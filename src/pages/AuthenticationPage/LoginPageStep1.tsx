@@ -35,7 +35,7 @@ export const LoginPageStep1 = () => {
     <div className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-70 backdrop-blur-[2px] overflow-hidden">
       <div
         ref={ref}
-        className="relative p-4 pb-8 text-[14px] rounded-2xl shadow w-full max-w-sm h-full md:h-auto bg-gray-700 bg-opacity-90"
+        className="relative p-4 pb-8 text-sm rounded-2xl shadow w-full max-w-sm h-full md:h-auto bg-gray-700 bg-opacity-90"
       >
         <div className="flex justify-end">
           <button 
@@ -50,14 +50,14 @@ export const LoginPageStep1 = () => {
           </button>
         </div>
         <div className="px-4 flex flex-col items-center gap-4 w-full">
-          <h3 className="text-center text-[24px]">Step №1</h3>
-          <h3 className="text-center text-[18px] text-gray-300">
+          <h3 className="text-center text-2xl">Step №1</h3>
+          <h3 className="text-center text-lg text-gray-300">
             To sign in to our platform, please approve your account first!
           </h3>
-          <FaUserPlus className="text-[30px]"/>
+          <FaUserPlus className="text-3xl"/>
           <button
             type="button"
-            className="py-2 text-[14px] w-[70%] text-center rounded-lg bg-blue-800 hover:bg-blue-700 duration-700"
+            className="py-2 text-sm w-[70%] text-center rounded-lg bg-blue-800 hover:bg-blue-700 duration-700"
             onClick={() => authenticateUser()}
           >
             Approve account

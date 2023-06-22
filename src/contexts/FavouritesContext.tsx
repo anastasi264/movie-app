@@ -58,7 +58,7 @@ export const FavouritesProvider: React.FC<{children: ReactNode}> = ({ children }
       await api.post.account.changeFavourites(session_id, {
         media_type: type === 'tv' ? type : 'movie', 
         media_id: id, 
-        favourite: true,
+        favorite: true,
       });
 
       type === 'movies' ? fetchFavouriteMovies() : fetchFavouriteTv();
@@ -70,7 +70,7 @@ export const FavouritesProvider: React.FC<{children: ReactNode}> = ({ children }
       await api.post.account.changeFavourites(session_id, {
         media_type: type === 'tv' ? type : 'movie', 
         media_id: id, 
-        favourite: false,
+        favorite: false,
       });
 
       type === 'movies' ? fetchFavouriteMovies() : fetchFavouriteTv();

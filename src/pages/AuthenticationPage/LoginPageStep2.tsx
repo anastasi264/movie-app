@@ -58,7 +58,7 @@ export const LoginPageStep2 = () => {
     <div className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-70 backdrop-blur-[2px] overflow-hidden">
       <div
         ref={ref}
-        className="relative p-4 pb-8 text-[14px] rounded-2xl shadow w-full max-w-sm h-full md:h-auto bg-gray-700 bg-opacity-90"
+        className="relative p-4 pb-8 text-sm rounded-2xl shadow w-full max-w-sm h-full md:h-auto bg-gray-700 bg-opacity-90"
       >
         <div className="flex justify-end">
           <button 
@@ -73,8 +73,8 @@ export const LoginPageStep2 = () => {
           </button>
         </div>
         <form className="px-4 flex flex-col gap-4 w-full" onSubmit={(event) => handleCreateSession(event)}>
-          <h3 className="text-center text-[24px]">Step №2</h3>
-          <h3 className="text-center text-[20px] text-gray-300">Sign in to our platform</h3>
+          <h3 className="text-center text-2xl">Step №2</h3>
+          <h3 className="text-center text-xl text-gray-300">Sign in to our platform</h3>
           <div>
             <label
               htmlFor="email"
@@ -126,7 +126,7 @@ export const LoginPageStep2 = () => {
           )}
           <button
             type="submit"
-            className="py-2 text-[14px] w-[70%] mx-auto my-3 text-center rounded-lg bg-blue-800 hover:bg-blue-700 duration-700"
+            className="py-2 text-sm w-[70%] mx-auto my-3 text-center rounded-lg bg-blue-800 hover:bg-blue-700 duration-700"
           >
             Login to your account
           </button>

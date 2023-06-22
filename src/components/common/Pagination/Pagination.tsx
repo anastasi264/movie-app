@@ -3,6 +3,8 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { getSearchWith } from "../../../utils/getSearchParams";
 
+import "./Pagination.scss"
+
 import {
   MdOutlineKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
@@ -30,6 +32,7 @@ export const Pagination: React.FC<Props> = ({ linkLocationState = {}, totalPages
       case page >= totalPages - 2:
         return new Array(5).fill(1).map((a, b) => totalPages - 4 + b);
 
+
       default:
         return new Array(5).fill(1).map((a, b) => page - 2 + b);
     }
@@ -52,35 +55,34 @@ export const Pagination: React.FC<Props> = ({ linkLocationState = {}, totalPages
   };
 
   return (
-    <nav className="mx-[auto] my-8">
-      <ul className="inline-flex p-5">
+    <nav className="nav">
+      <ul className="nav__list">
         <li>
           <Link 
             to={{ search: getSearchWith(searchParams, {page: 1})}}
             state={linkLocationState}
-            className="p-4 rounded-l-[12px] bg-gray-800 border-r border-gray-700 text-gray-400 hover:bg-blue-600 hover:text-white duration-500"
+            className="nav__link rounded-l-[12px]"
           >
-            <MdOutlineKeyboardDoubleArrowLeft className="inline text-[22px] text-gray-300"/>
+            <MdOutlineKeyboardDoubleArrowLeft className="nav__icon" />
           </Link>
         </li>
         <li>
           <Link 
             to={{ search: getSearchWith(searchParams, {page: previousPage()})}}
             state={linkLocationState}
-            className="p-4 bg-gray-800 border-r border-gray-700 text-gray-400 hover:bg-blue-600 hover:text-white duration-500"
+            className="nav__link"
           >
-            <MdOutlineKeyboardArrowLeft className="inline text-[22px] text-gray-300"/>
+            <MdOutlineKeyboardArrowLeft className="nav__icon" />
           </Link>
         </li>
         {paginationLinks.map(number => (
-          <li key={number}>
+          <li key={number} className={classNames({"md:hidden": page !== number})}>
             <Link 
               to={{ search: getSearchWith(searchParams, {page: String(number)})}}
               state={linkLocationState}
               className={classNames(
-                "py-4 px-6 border-r border-gray-700 text-gray-400 hover:bg-blue-600 hover:text-white duration-300",
-                {"bg-blue-600 text-white": page === number},
-                {"bg-gray-800": page !== number},
+                "nav__link nav__link_page",
+                {"nav__link_active": page === number},
               )}
             >
               {number}
@@ -91,18 +93,18 @@ export const Pagination: React.FC<Props> = ({ linkLocationState = {}, totalPages
           <Link 
             to={{ search: getSearchWith(searchParams, {page: nextPage()})}}
             state={linkLocationState}
-            className="p-4 bg-gray-800 border-r border-gray-700 text-gray-400 hover:bg-blue-600 hover:text-white duration-500"
+            className="nav__link"
           >
-            <MdOutlineKeyboardArrowRight className="inline text-[22px] text-gray-300"/>
+            <MdOutlineKeyboardArrowRight className="nav__icon" />
           </Link>
         </li>
         <li>
           <Link 
             to={{ search: getSearchWith(searchParams, {page: totalPages})}}
             state={linkLocationState}
-            className="p-4 rounded-r-[12px] bg-gray-800 text-gray-400 hover:bg-blue-600 hover:text-white duration-500"
+            className="nav__link rounded-r-[12px] border-none"
           >
-            <MdOutlineKeyboardDoubleArrowRight className="inline text-[22px] text-gray-300"/>
+            <MdOutlineKeyboardDoubleArrowRight className="nav__icon" />
           </Link>
         </li>
       </ul>

@@ -14,7 +14,7 @@ export const Sidebar = () => {
     <div className="pr-10 lg:pr-5 flex flex-col h-full justify-between">
       <nav className="flex flex-col">
         <p
-          className="mb-5 lg:text-base text-gray-400 font-bold">
+          className="mb-5 text-gray-400 font-bold">
           Menu
         </p>
         <ul className="flex flex-col gap-2">
@@ -27,9 +27,9 @@ export const Sidebar = () => {
                 to={link.path}
                 className={({ isActive }) => (
                   classNames(
-                    'flex items-center gap-3 p-2 lg:text-sm hover:scale-105 duration-500',
-                    {'group text-gray-500 hover:text-[#EFEFEF]': !isActive},
-                    {'text-[#EFEFEF] bg-gray-600 bg-opacity-20 rounded-lg': isActive}
+                    'flex items-center gap-3 p-2 hover:scale-105 duration-500',
+                    {'group text-gray-500 hover:text-inherit': !isActive},
+                    {'text-inherit bg-gray-600 bg-opacity-20 rounded-lg': isActive}
                   )
                 )}
               >

@@ -39,7 +39,7 @@ export const Select: React.FC<Props> = ({ options, selected, label }) => {
   return (
     <div 
       ref={ref}
-      className="relative flex flex-col gap-2 py-2 w-full lg:text-sm text-gray-400 border-b-2 border-gray-700"
+      className="relative flex flex-col gap-2 py-2 w-full  text-gray-400 border-b-2 border-gray-700"
     >
       <div
         className="cursor-pointer "

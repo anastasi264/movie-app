@@ -1,6 +1,6 @@
 import { HiFire } from "react-icons/hi";
 import { Movie } from "../../../types/Movie";
-import { ItemProposal } from "./ItemProposal";
+import { Slide } from "./Slide";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from 'swiper';
 
@@ -12,15 +12,16 @@ import 'swiper/css/autoplay';
 import { useState } from "react";
 import { ModalTrailer } from "../Modal/ModalTrailer";
 import { Title } from "../Title/Title";
+import { TV } from "../../../types/TV";
 
 type Props = {
   title: string,
-  movies: Movie[] | any,
+  movies: Movie[] | TV[],
 };
 
 export const SwiperList: React.FC<Props> = ({ title, movies }) => {
   const [modalIsOpen, setModalWindow] = useState(false);
-  const [trailerLink, setTrailerLink] = useState<any>(null);
+  const [trailerLink, setTrailerLink] = useState<string>('');
 
   return (
     <div className="flex flex-col gap-5">
@@ -40,7 +41,7 @@ export const SwiperList: React.FC<Props> = ({ title, movies }) => {
       >
         {movies.map((movie: any) => (
           <SwiperSlide key={movie.id}>
-            <ItemProposal movie={movie} setModalWindow={setModalWindow} setTrailerLink={setTrailerLink}/>
+            <Slide movie={movie} setModalWindow={setModalWindow} setTrailerLink={setTrailerLink}/>
           </SwiperSlide>
         ))}
       </Swiper>

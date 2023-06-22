@@ -18,6 +18,8 @@ export const ModalError: React.FC<Props> = ({ text }) => {
       if (!ref.current || ref.current.contains(event.target)) {
         return;
       }
+
+      navigate(-1);
     };
 
     document.addEventListener("mousedown", listener);
@@ -26,19 +28,21 @@ export const ModalError: React.FC<Props> = ({ text }) => {
       document.removeEventListener("mousedown", listener);
       document.removeEventListener("touchstart", listener);
     };
-  },[ref]);
+  },[navigate, ref]);
 
   return (
     <div className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-70 backdrop-blur-[2px]">
       <div ref={ref} className="relative rounded-lg shadow bg-gray-700 bg-opacity-70">
         <div className="p-6 flex flex-col gap-3 items-center ">
-            <TbMovieOff className="text-[34px]"/>
-            <h3 className="font-normal text-gray-500 dark:text-gray-400">
+            <TbMovieOff className="text-5xl lg:text-4xl" />
+            <span className="text-gray-500 dark:text-gray-400 text-center">
               Oops, something went wrong!
-            </h3>
-            <span>{text}</span>
+            </span>
+            <span className="text-center">
+              {text}
+            </span>
             <button
-              className="px-5 py-2 mt-2 text-[16px] rounded-lg bg-blue-800 hover:bg-blue-700 duration-700"
+              className="px-5 py-2 mt-2 rounded-lg bg-blue-800 hover:bg-blue-700 duration-700"
               onClick={goBack}
             >
               Go Back
