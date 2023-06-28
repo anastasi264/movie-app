@@ -17,7 +17,7 @@ export const GenresList: React.FC<Props> = ({ type, genres, images }) => {
     <div className="flex flex-col gap-5">
       <Title text={`${type} Genre`} icon={<MdOutlineMovieFilter />} />
 
-      <div className="grid grid-flow-row gap-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
+      <div className="grid grid-flow-row gap-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-cols-4">
           {genres.map(genre => {
             const genreImage = images.find(image => image.name === genre.name);
             return (

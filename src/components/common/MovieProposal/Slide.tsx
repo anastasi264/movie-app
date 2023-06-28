@@ -50,9 +50,6 @@ export const Slide: React.FC<Props> = ({ movie, setModalWindow, setTrailerLink})
     } else {
       text?.classList.remove('scroll');
     }
-
-    console.log(useEffect);
-    
   }, [windowWidth]);
   
   return (

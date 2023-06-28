@@ -36,11 +36,11 @@ export const Header = () => {
 
   
   useEffect(() => {
-    setIsMenuOpen(false); // Встановлюємо значення isMenuOpen в false при зміні pathname
+    setIsMenuOpen(false);
   }, [location.pathname]);
   
   return (
-    <>
+    <header className="sticky top-0 z-50">
       <div className="container header">
         <div className="header__logo logo">
           <Link
@@ -102,6 +102,6 @@ export const Header = () => {
 
         <BurgerMenu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
 
-    </>
+    </header>
   );
 };
