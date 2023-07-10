@@ -7,15 +7,19 @@ This is a README file for the Movie App, a personal project developed using Reac
 
 - **Movie Listing**: Users can browse and view a list of movies.
 - **Sorting:** Movies can be sorted based on various criteria such as popularity, release date, rating, etc.
-- **Search:** Users can search for movies by title, genre, or any relevant keywords.
+- **Search:** Users can search for movies by title or genre.
+- **Routing:** The application utilizes routing to enable different views and pages within the app, enhancing navigation and user experience.
 - **Pagination:** Movies are displayed in pages, with the ability to navigate to different pages.
 - **Loading State:** A loader component is displayed during data retrieval to indicate loading progress.
 - **Error Handling:** Errors during API calls or other processes are handled gracefully and displayed to the user.
 - **User Authentication:** Users can create accounts, log in, and authenticate themselves to access personalized features.
-- **Favorite Movies:** Authenticated users can add movies to their favorite list, which is associated with their account.
+- **Favorite Movies and Watchlist :** Authenticated users can add movies and TV to their favorite list or watchlist, which is associated with their account.
+- **Responsive Design:** The application features an adaptive design that ensures a seamless user experience across different devices and screen sizes.
+
 
 ## Technologies Used
 - **React.js:** The Movie App is built using the React.js library, allowing for efficient component-based development and a rich user interface.
+- **HTML:** HTML is used for structuring the application and creating the user interface elements.
 - **SCSS:** The project utilizes SCSS (Sass) for styling, providing enhanced CSS features such as variables, mixins, and nesting.
 - **Tailwind CSS:** Tailwind CSS is employed for utility-based styling, offering a large set of pre-defined classes for rapid and consistent UI development.
 - **API Integration:** The application integrates with an external API to fetch movie data for display and other relevant information.
