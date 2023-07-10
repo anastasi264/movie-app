@@ -7,7 +7,7 @@ import { api } from "../../api/fetchData";
 export const LoginPageStep1 = () => {
   const authenticateUser = async () => {
     const token = await api.get.authentication.token();
-    const url = `https://www.themoviedb.org/authenticate/${token.request_token}?redirect_to=http://localhost:3000/%23/authentication`;
+    const url = `https://www.themoviedb.org/authenticate/${token.request_token}?redirect_to=${process.env.homepage}/%23/authentication`;
     window.open(url, '_blank');
   };
 
